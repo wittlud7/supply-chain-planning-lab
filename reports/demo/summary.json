@@ -1,0 +1,212 @@
+{
+  "data_mode": "independent_synthetic",
+  "daily": {
+    "skus": 48,
+    "days": 420,
+    "start": "2024-01-01",
+    "end": "2025-02-23",
+    "selection_end": "2024-12-29",
+    "holdout_days": 56,
+    "horizon_days": 7,
+    "validation_days": 42,
+    "test_origins": 8
+  },
+  "annual": {
+    "cohorts": 72,
+    "years": [
+      2020,
+      2021,
+      2022,
+      2023,
+      2024
+    ],
+    "test_years": [
+      2023,
+      2024
+    ]
+  },
+  "forecast": [
+    {
+      "model": "seasonal_naive",
+      "wape": 0.6782404692082111,
+      "bias": -0.008579807289484709,
+      "mae": 15.057291666666666,
+      "mase": 1.002563936651568,
+      "actual_total": 59675.0,
+      "observations": 2688,
+      "mase_observations": 2688
+    },
+    {
+      "model": "mean_28",
+      "wape": 0.5910234005625712,
+      "bias": -0.03138248847926267,
+      "mae": 13.121027317176873,
+      "mase": 0.8610730486115734,
+      "actual_total": 59675.0,
+      "observations": 2688,
+      "mase_observations": 2688
+    },
+    {
+      "model": "ses",
+      "wape": 0.6359602802649861,
+      "bias": 0.005997638161049871,
+      "mae": 14.11864945119533,
+      "mase": 0.9003619884755919,
+      "actual_total": 59675.0,
+      "observations": 2688,
+      "mase_observations": 2688
+    },
+    {
+      "model": "croston_sba",
+      "wape": 0.5917089679649563,
+      "bias": -0.06002742316690688,
+      "mae": 13.136247270576177,
+      "mase": 0.8654460036411038,
+      "actual_total": 59675.0,
+      "observations": 2688,
+      "mase_observations": 2688
+    },
+    {
+      "model": "weekday_blend",
+      "wape": 0.6020952913543078,
+      "bias": -0.017471302890657826,
+      "mae": 13.366829059363216,
+      "mase": 0.8703298979267509,
+      "actual_total": 59675.0,
+      "observations": 2688,
+      "mase_observations": 2688
+    },
+    {
+      "model": "selected",
+      "wape": 0.6195727807669752,
+      "bias": -0.012963285859040004,
+      "mae": 13.754838427183499,
+      "mase": 0.8813835383555797,
+      "actual_total": 59675.0,
+      "observations": 2688,
+      "mase_observations": 2688
+    }
+  ],
+  "inventory": [
+    {
+      "policy": "fixed_cover",
+      "lead_factor": 1.0,
+      "shortage_multiplier": 5.0,
+      "fill_rate": 0.9715458734813573,
+      "service_cost": 24718.825459999996,
+      "holding_cost": 1677.27546,
+      "orders": 306,
+      "lost_units": 1698.0,
+      "ending_stock": 12270.0,
+      "ending_pipeline": 3755.0
+    },
+    {
+      "policy": "segmented_forecast",
+      "lead_factor": 1.0,
+      "shortage_multiplier": 5.0,
+      "fill_rate": 0.9840636782572266,
+      "service_cost": 15009.480080000001,
+      "holding_cost": 1622.3300800000002,
+      "orders": 305,
+      "lost_units": 951.0,
+      "ending_stock": 11578.0,
+      "ending_pipeline": 3935.0
+    },
+    {
+      "policy": "uniform_95",
+      "lead_factor": 1.0,
+      "shortage_multiplier": 5.0,
+      "fill_rate": 0.9843653121072475,
+      "service_cost": 14313.115109999999,
+      "holding_cost": 1370.51511,
+      "orders": 314,
+      "lost_units": 933.0,
+      "ending_stock": 9765.0,
+      "ending_pipeline": 3820.0
+    }
+  ],
+  "production": [
+    {
+      "capacity_factor": 0.5,
+      "policy": "milp",
+      "capacity": 36550,
+      "planned_units": 36550,
+      "underage": 34748.10110999306,
+      "overage": 44.40490718100364,
+      "objective": 152262.4596294187,
+      "solver_status": 0.0,
+      "mip_gap": 0.0,
+      "dual_bound": 152262.45962441873
+    },
+    {
+      "capacity_factor": 0.5,
+      "policy": "priority_greedy",
+      "capacity": 36550,
+      "planned_units": 36550,
+      "underage": 35113.462981518736,
+      "overage": 409.766778706687,
+      "objective": 153645.2305739749,
+      "solver_status": null,
+      "mip_gap": null,
+      "dual_bound": null
+    },
+    {
+      "capacity_factor": 0.75,
+      "policy": "milp",
+      "capacity": 54850,
+      "planned_units": 54850,
+      "underage": 16469.63444332639,
+      "overage": 65.93824051433694,
+      "objective": 61347.792962752035,
+      "solver_status": 0.0,
+      "mip_gap": 0.0,
+      "dual_bound": 61347.7929617519
+    },
+    {
+      "capacity_factor": 0.75,
+      "policy": "priority_greedy",
+      "capacity": 54850,
+      "planned_units": 54850,
+      "underage": 17194.18842041504,
+      "overage": 790.4922176029885,
+      "objective": 64999.583207352705,
+      "solver_status": null,
+      "mip_gap": null,
+      "dual_bound": null
+    },
+    {
+      "capacity_factor": 1.0,
+      "policy": "milp",
+      "capacity": 73150,
+      "planned_units": 72600,
+      "underage": 53.24110445474989,
+      "overage": 1399.5449016426967,
+      "objective": 3749.2504239164464,
+      "solver_status": 0.0,
+      "mip_gap": 0.0,
+      "dual_bound": 3749.2504239164596
+    },
+    {
+      "capacity_factor": 1.0,
+      "policy": "priority_greedy",
+      "capacity": 73150,
+      "planned_units": 72600,
+      "underage": 53.24110445474989,
+      "overage": 1399.5449016426967,
+      "objective": 3749.2504239164464,
+      "solver_status": null,
+      "mip_gap": null,
+      "dual_bound": null
+    }
+  ],
+  "data_sha256": {
+    "daily.csv": "927337d1759852f79c689f3a8b301cdcb1e6c7de28f05f54dd5cfcfba46a54d7",
+    "products.csv": "b22d712ac872a704284a91ef5aad5e418fe85cbfd7b72ae184435b95bee58199",
+    "annual.csv": "7ec82a5c88962f733081f1e97610c63febbd213b616b4a858c8dd7daf8530734"
+  },
+  "assumptions": {
+    "inventory": "lost sales; hypothetical initial stock, lead times, batches, costs; no actual supplier history",
+    "production": "single-period total unit capacity; zero compatible usable stock; no machine sequencing",
+    "interpretation": "retrospective experiments and scenario simulation; no deployed business impact claimed"
+  }
+}

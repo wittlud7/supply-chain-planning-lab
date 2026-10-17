@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "supply-chain-planning-lab"
+version = "0.1.0"
+description = "Reproducible demand forecasting, replenishment simulation and print planning experiments"
+requires-python = ">=3.11"
+dependencies = ["numpy>=2.0,<3", "pandas>=2.2,<3", "scipy>=1.13,<2", "matplotlib>=3.8,<4"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<9"]
+
+[project.scripts]
+supplychain = "supplychain.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["supplychain*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

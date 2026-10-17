@@ -1,0 +1,17 @@
+name: Planning experiments
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install -e ".[dev]"
+      - run: python -m pytest -q
+      - run: python -m supplychain demo
+      - run: python scripts/check_results.py
+      - run: python scripts/privacy_check.py

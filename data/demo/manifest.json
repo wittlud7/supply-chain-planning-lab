@@ -1,0 +1,14 @@
+{
+  "mode": "independent_synthetic",
+  "seed": 20261017,
+  "n_skus": 48,
+  "n_days": 420,
+  "generator": "supplychain.data.generate_demo",
+  "private_inputs_read": false,
+  "operational_parameters": "authored scenario assumptions",
+  "sha256": {
+    "daily.csv": "927337d1759852f79c689f3a8b301cdcb1e6c7de28f05f54dd5cfcfba46a54d7",
+    "products.csv": "b22d712ac872a704284a91ef5aad5e418fe85cbfd7b72ae184435b95bee58199",
+    "annual.csv": "7ec82a5c88962f733081f1e97610c63febbd213b616b4a858c8dd7daf8530734"
+  }
+}

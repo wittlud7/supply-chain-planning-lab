@@ -1,0 +1,10 @@
+policy,critical_fractile,scenario_loss,overage,underage,sku_years
+last_year,0.5,37294.0,22688.0,14606.0,144
+last_year,0.75,66506.0,22688.0,14606.0,144
+last_year,0.9,154142.0,22688.0,14606.0,144
+pooled_newsvendor,0.5,37594.0,19713.0,17881.0,144
+pooled_newsvendor,0.75,64324.0,36730.0,9198.0,144
+pooled_newsvendor,0.9,100272.0,62076.0,4244.0,144
+trend_blend,0.5,39156.0,24119.0,15037.0,144
+trend_blend,0.75,69230.0,24119.0,15037.0,144
+trend_blend,0.9,159452.0,24119.0,15037.0,144
