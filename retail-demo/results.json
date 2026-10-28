@@ -1,0 +1,85 @@
+{
+  "seed": 20261028,
+  "stores": 6,
+  "skus": 12,
+  "series": 72,
+  "days": 210,
+  "rows": 15120,
+  "validation": "2026-06-04—2026-07-01",
+  "test": "2026-07-02—2026-07-29",
+  "metrics": {
+    "mean28": {
+      "wape": 0.24129383235559856,
+      "bias": -0.0040966451405914485,
+      "mae": 3.3466353405232594,
+      "n": 2016
+    },
+    "weekday": {
+      "wape": 0.24978243505835512,
+      "bias": -0.005501710716116507,
+      "mae": 3.464368386243387,
+      "n": 2016
+    },
+    "promo": {
+      "wape": 0.22488664767195587,
+      "bias": -0.005188774841147792,
+      "mae": 3.1190751763668443,
+      "n": 2016
+    },
+    "selected": {
+      "wape": 0.233383481430413,
+      "bias": -0.0034334159373707175,
+      "mae": 3.2369223830733023,
+      "n": 2016
+    }
+  },
+  "policies": [
+    {
+      "policy": "cover",
+      "sold": 27009,
+      "lost": 952,
+      "waste": 1,
+      "fill": 0.9659525768034047,
+      "wasteRate": 0.000035683699685983445,
+      "avgInventory": 931.8928571428572,
+      "ending": 1014,
+      "transit": 1928,
+      "ordered": 27988
+    },
+    {
+      "policy": "balanced",
+      "sold": 26632,
+      "lost": 1329,
+      "waste": 0,
+      "fill": 0.9524695111047531,
+      "wasteRate": 0,
+      "avgInventory": 616.3928571428572,
+      "ending": 616,
+      "transit": 1856,
+      "ordered": 27140
+    },
+    {
+      "policy": "cautious",
+      "sold": 26995,
+      "lost": 966,
+      "waste": 0,
+      "fill": 0.9654518794034548,
+      "wasteRate": 0,
+      "avgInventory": 856.6071428571428,
+      "ending": 887,
+      "transit": 1876,
+      "ordered": 27794
+    }
+  ],
+  "checks": [
+    "deterministic generation",
+    "future-data isolation",
+    "hidden-demand isolation",
+    "validation-only model selection",
+    "864 inventory paths with conservation and capacity checks",
+    "pack multiples",
+    "filter partition",
+    "next-plan constraints",
+    "empty-scope handling"
+  ]
+}
