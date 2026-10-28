@@ -4,12 +4,13 @@ import importlib.util
 import json
 import re
 import tempfile
+from zipfile import ZipFile, BadZipFile
 
 ROOT=Path(__file__).resolve().parents[1]
 spec=importlib.util.spec_from_file_location('demo_data',ROOT/'supplychain/data.py')
 mod=importlib.util.module_from_spec(spec);spec.loader.exec_module(mod)
 SKIP={'.git','.venv','__pycache__','.pytest_cache'}
-ALLOWED={'.py','.md','.toml','.csv','.json','.png','.yml','.txt','.gitignore'}
+ALLOWED={'.py','.md','.toml','.csv','.json','.png','.yml','.txt','.gitignore','.mjs','.html','.css'}
 PATTERNS={
     'private_sku':re.compile(r'\b(?:LOCAL_\d{4}|PRINT_\d{2}_\d{3})\b'),
     'email':re.compile(r'\b[A-Za-z0-9_.+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b'),
@@ -25,6 +26,28 @@ def main():
     for p in ROOT.rglob('*'):
         if not p.is_file() or any(part in SKIP or part.endswith('.egg-info') for part in p.relative_to(ROOT).parts):continue
         count+=1
+        if p.relative_to(ROOT).as_posix() == 'retail-demo/source.zip':
+            # Only this generated source bundle is permitted. Validate its exact
+            # membership and bytes, then scan the decompressed text as usual.
+            expected={f'retail-demo/{q.name}':q for q in (ROOT/'retail-demo').iterdir()
+                      if q.is_file() and q.name!='source.zip'}
+            expected['retail-demo/LICENSE']=ROOT/'LICENSE'
+            try:
+                with ZipFile(p) as archive:
+                    names=archive.namelist()
+                    if len(names)!=len(set(names)) or set(names)!=set(expected):
+                        errors.append('Unexpected source bundle members')
+                        continue
+                    for name in names:
+                        content=archive.read(name)
+                        if content!=expected[name].read_bytes():
+                            errors.append(f'Source bundle differs from checked source: {name}')
+                        text=content.decode('utf-8')
+                        for label,pattern in PATTERNS.items():
+                            if pattern.search(text):errors.append(f'{label}: source.zip/{name}')
+            except (BadZipFile,UnicodeDecodeError) as error:
+                errors.append(f'Invalid source bundle: {type(error).__name__}')
+            continue
         if p.name not in {'LICENSE','.gitignore','.gitattributes'} and p.suffix not in ALLOWED: errors.append(f'Unexpected file type: {p.relative_to(ROOT)}')
         if p.suffix=='.png':continue
         text=p.read_text(encoding='utf-8')
